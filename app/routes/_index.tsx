@@ -3,6 +3,8 @@ import { Link } from "@remix-run/react";
 import { Command } from "lucide-react";
 import { Card, CardContent } from "~/components/ui/card";
 import { ThemeToggle } from "./resources.theme-toggle";
+import { OTPInput } from "input-otp";
+import { FakeDash, Slot } from "~/components/opt-form";
 
 export default function Index() {
   return (
@@ -47,7 +49,30 @@ export default function Index() {
             </CardContent>
           </Card>
 
-      
+          <div className="flex justify-center items-center">
+            <OTPInput
+              maxLength={6}
+              containerClassName="group flex items-center has-[:disabled]:opacity-30"
+              render={({ slots }) => (
+                <>
+                  <div className="flex">
+                    {slots.slice(0, 3).map((slot, idx) => (
+                      <Slot key={idx} {...slot} />
+                    ))}
+                  </div>
+
+                  <FakeDash />
+
+                  <div className="flex">
+                    {slots.slice(3).map((slot, idx) => (
+                      <Slot key={idx} {...slot} />
+                    ))}
+                  </div>
+                </>
+              )}
+            />
+          </div>
+
         </div>
       </div>
     </section>
