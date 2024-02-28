@@ -1,10 +1,24 @@
 import { Button } from "~/components/ui/button";
-import { Link } from "@remix-run/react";
+import { Link, MetaFunction } from "@remix-run/react";
 import { Command } from "lucide-react";
 import { Card, CardContent } from "~/components/ui/card";
 import { ThemeToggle } from "./resources.theme-toggle";
 import { OTPInput } from "input-otp";
 import { FakeDash, Slot } from "~/components/opt-form";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "A Remix otp in actions" },
+    {
+      property: "og:title",
+      content: "remix otp",
+    },
+    {
+      name: "description",
+      content: "Showcasing the remix opt in action",
+    },
+  ];
+};
 
 export default function Index() {
   return (
@@ -36,7 +50,7 @@ export default function Index() {
             With optimistic dark-mode.
           </p>
           <p className="text-muted-foreground mt-2">
-            (On mobile, tap for animations.)
+           remix + turso + drizzle + nodemailer + sqlite 
           </p>
 
           <Card className="relative group overflow-hidden rounded-lg">
