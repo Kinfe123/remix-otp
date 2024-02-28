@@ -11,7 +11,6 @@
     "typecheck": "tsc",
     "db:migrations": "drizzle-kit generate:sqlite --out ./app/db/migrations --schema ./app/db/schema.server.ts",
     "routes:gen": "routes-gen -d @routes-gen/remix"
-
   },
   "dependencies": {
     "@epic-web/client-hints": "^1.2.2",
@@ -24,6 +23,7 @@
     "@remix-run/react": "^2.4.1",
     "@remix-run/serve": "^2.4.1",
     "@routes-gen/remix": "^0.3.7",
+    "better-sqlite3": "^9.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cookie": "^0.6.0",
