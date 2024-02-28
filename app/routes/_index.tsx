@@ -12,7 +12,7 @@ export default function Index() {
       <nav className="flex items-center justify-between p-4 w-full">
         <Link to="/" className="flex items-center space-x-2">
           <Command className="h-8 w-8" />
-          <h1 className="text-xl font-semibold">Remix + Shadcn</h1>
+          <h1 className="text-xl font-semibold">Remixos</h1>
         </Link>
         <ThemeToggle />
       </nav>
@@ -21,14 +21,14 @@ export default function Index() {
           <h1 className="text-3xl md:text-4xl font-bold tracking-tighter">
             A{" "}
             <span className="font-extrabold bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text bg-300% animate-gradient">
-              Simple Starter
+             REMIX
             </span>{" "}
-            For Remix, Shadcn-ui and{" "}
+            Otp in Actions
             <Link
               to="https://ui.aceternity.com"
               className="hover:text-blue-500"
             >
-              Aceternity-ui
+             
             </Link>
           </h1>
 
@@ -42,8 +42,8 @@ export default function Index() {
           <Card className="relative group overflow-hidden rounded-lg">
             <CardContent className="p-1 bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 bg-300% animate-gradient">
               <Button asChild>
-                <Link to="https://github.com/rajeshdavidbabu/remix-shadcn-starter">
-                  Star on Github
+                <Link to="https://github.com/Kinfe123/remix-otp">
+                  Check it on Github
                 </Link>
               </Button>
             </CardContent>
