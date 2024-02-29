@@ -79,7 +79,7 @@ export default function Index() {
               </Button>
             </CardContent>
           </Card>
-          {actionsData?.opt && <code>The code is: {actionsData.opt}</code>}
+         
 
           <div className="max-w-6xl mx-auto justify-center items-center flex flex-col gap-10">
               <AccountForm />  
@@ -91,6 +91,7 @@ export default function Index() {
         
 
         </div>
+        {actionsData?.opt && <code>The code is: {actionsData.opt}</code>}
 
           
         </div>

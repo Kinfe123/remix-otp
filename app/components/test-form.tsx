@@ -3,8 +3,8 @@ import { useRef, useState } from "react";
 import { FakeDash, Slot } from "./opt-form";
 import { toast } from "sonner";
 
+
 export default function TestForm({otpcode}: {otpcode: number | undefined}) {
-   console.log('THE OTP: ' , otpcode)
     const [val , setVal] = useState('')
     const ref = useRef(null)
     const handleComp = (e) => {
@@ -12,9 +12,11 @@ export default function TestForm({otpcode}: {otpcode: number | undefined}) {
         console.log('I am completed is: ' , val)
         if(match){
 
-            return toast.success("Verified!")
+
+            setVal('')
+            return toast.success("Verified!" , {position:"bottom-right"})
         }else {
-            return toast.error("Incorrect OTP ,please try again later")
+            return toast.error("Incorrect OTP ,please try again later" , {position:"bottom-right"})
         }
 
     }

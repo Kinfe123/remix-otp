@@ -23,8 +23,8 @@ export default function AccountForm() {
 
             <Form method="post" className="gap-2 flex flex-col  ">
 
-                <Input name="name" placeholder="Name" value={'name'} className="mb-5  py-4" />
-                <Input name='email' placeholder="Email" value={'name@abeb.com'} className="mb-5" />
+                <Input name="name" placeholder="Name"  className="mb-5  py-4" />
+                <Input name='email' placeholder="Email"  className="mb-5" />
                 <Button type='submit' variant='default' >Sign in </Button>
 
             </Form>
