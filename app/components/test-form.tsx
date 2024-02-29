@@ -3,20 +3,16 @@ import { useRef, useState } from "react";
 import { FakeDash, Slot } from "./opt-form";
 import { toast } from "sonner";
 
-
 export default function TestForm({otpcode}: {otpcode: number | undefined}) {
+
     const [val , setVal] = useState('')
     const ref = useRef(null)
     const handleComp = (e) => {
         const match = parseInt(val) === otpcode
-        console.log('I am completed is: ' , val)
         if(match){
-
-
-            setVal('')
-            return toast.success("Verified!" , {position:"bottom-right"})
+            toast.success("Verified!")
         }else {
-            return toast.error("Incorrect OTP ,please try again later" , {position:"bottom-right"})
+            toast.error("Incorrect OTP ,  please try again")
         }
 
     }

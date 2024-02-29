@@ -51,8 +51,8 @@ export default function App() {
         <Links />
       </head>
       <body>
-      <Toaster />
         <Outlet />
+        <Toaster />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

@@ -33,7 +33,7 @@ export const action = async ({
   const name = formData.get('name')
   const email = formData.get('email')
   
-  toast.success('We have sent you an OTP to verify' , {position:'top-center'})
+
   return json({name: name , email: email , opt: randomPassword()})
 
 
