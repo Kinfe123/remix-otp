@@ -13,8 +13,11 @@ export const createAccount = async ({
     .insert(otps)
     .values({ email: email, name: name, otp: otp });
 
-
-    const result = await req.json()
-    console.log('THe resolved result is: ' , result)
-  console.log(name, email, otp);
+  console.log("THe re is : " , req)
+  return req
+  
 };
+
+
+
+

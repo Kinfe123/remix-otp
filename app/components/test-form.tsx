@@ -11,13 +11,12 @@ export default function TestForm({otpcode , name , email}: {otpcode: number  , n
     const [isPending , startTransition] = useTransition()
     
     const ref = useRef(null)
-    const handleComp =  (e) => {
+    const handleComp =  async (e) => {
         console.log('The props from entry : ' , name , email , otpcode)
         const match = parseInt(val) === otpcode
-
-        startTransition(() => {
-            createAccount({name:name,email:email , otp:otpcode}).then(data => toast.success('Sucessfully verified')).catch(err => toast.error('Error while updating the db'))
-        })      
+        const res = await createAccount({name: name , email:email , otp:otpcode})
+        console.log('THe response is: ' , res)
+             
         if(match){
             toast.success("Verified!")
         }else {
