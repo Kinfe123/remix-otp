@@ -111,7 +111,7 @@ export default function Index() {
 
 
           </div>
-          {actionsData?.otp && <code>The code is: {actionsData.otp}</code>}
+          {(name && email && otp) && <code>The code is: {actionsData.otp}</code>}
 
 
         </div>
