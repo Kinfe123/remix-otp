@@ -70,7 +70,6 @@ export default function Index() {
               REMIX
             </span>{" "}
             Otp in Actions
-
           </h1>
 
           <p className="text-muted-foreground font-bold mt-2">
