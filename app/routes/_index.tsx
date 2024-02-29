@@ -6,6 +6,7 @@ import { ThemeToggle } from "./resources.theme-toggle";
 import { OTPInput } from "input-otp";
 import { FakeDash, Slot } from "~/components/opt-form";
 import { useState } from "react";
+import TestForm from "~/components/test-form";
 
 export const meta: MetaFunction = () => {
   return [
@@ -65,30 +66,7 @@ export default function Index() {
           </Card>
 
           <div className="flex justify-center items-center">
-            <OTPInput
-              maxLength={6}
-              value={val}
-              onChange={(e) => setVal(e.target.value)}  
-              onSubmit={handleSubmit}
-              containerClassName="group flex items-center has-[:disabled]:opacity-30"
-              render={({ slots }) => (
-                <>
-                  <div className="flex">
-                    {slots.slice(0, 3).map((slot, idx) => (
-                      <Slot key={idx} {...slot} />
-                    ))}
-                  </div>
-
-                  <FakeDash />
-
-                  <div className="flex">
-                    {slots.slice(3).map((slot, idx) => (
-                      <Slot key={idx} {...slot} />
-                    ))}
-                  </div>
-                </>
-              )}
-            />
+              <TestForm />
           </div>
 
         </div>
