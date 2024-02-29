@@ -7,7 +7,8 @@ import { OTPInput } from "input-otp";
 import { FakeDash, Slot } from "~/components/opt-form";
 import { useState } from "react";
 import TestForm from "~/components/test-form";
-
+import AccountForm from "~/components/account-form";
+import type { ActionFunctionArgs } from "@remix-run/node";
 export const meta: MetaFunction = () => {
   return [
     { title: "A Remix otp in actions" },
@@ -22,8 +23,21 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const action = async ({
+  request,
+}: ActionFunctionArgs) => {
+  const formData = await request.formData()
+  const name = formData.get('name')
+  const email = formData.get('email')
+  console.log('The email and name are:', name, email)
+  return null;
+
+
+};
+
 export default function Index() {
   const [val , setVal] = useState('')
+  
   const handleSubmit = () => {
     console.log('hELLO WORLD')
 
@@ -65,8 +79,9 @@ export default function Index() {
             </CardContent>
           </Card>
 
-          <div className="flex justify-center items-center">
-              <TestForm />
+          <div className="flex flex-col gap-10 justify-center items-center">
+              <AccountForm />
+             
           </div>
 
         </div>
