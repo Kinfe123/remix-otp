@@ -11,7 +11,7 @@ import TestForm from "~/components/test-form";
 import AccountForm from "~/components/account-form";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { randomPassword } from "~/lib/password";
-import { toast } from "sonner";
+
 export const meta: MetaFunction = () => {
   return [
     { title: "A Remix otp in actions" },
@@ -31,10 +31,10 @@ export const action = async ({
 }: ActionFunctionArgs) => {
   const formData = await request.formData()
   const name = formData.get('name')
+  const otp = randomPassword()
   const email = formData.get('email')
-  
 
-  return json({name: name , email: email , opt: randomPassword()})
+  return json({name: name , email: email , opt:otp })
 
 
 };

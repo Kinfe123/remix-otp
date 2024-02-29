@@ -52,10 +52,10 @@ export default function App() {
       </head>
       <body>
         <Outlet />
-        <Toaster />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <Toaster />
       </body>
     </html>
   );
