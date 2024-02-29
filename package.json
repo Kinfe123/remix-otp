@@ -10,6 +10,7 @@
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
     "db:migrations": "drizzle-kit generate:sqlite --out ./app/db/migrations --schema ./app/db/schema.server.ts",
+    "db:push": "drizzle-kit push:sqlite --driver better-sqlite --url sqlite.db  --schema ./app/db/schema.server.ts",
     "routes:gen": "routes-gen -d @routes-gen/remix"
   },
   "dependencies": {

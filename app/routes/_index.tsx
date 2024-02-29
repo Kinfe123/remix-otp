@@ -41,7 +41,9 @@ export const action = async ({
 
 export default function Index() {
   const actionsData = useActionData<typeof action>()
-  console.log(actionsData?.opt)
+  const name = actionsData?.name
+  const email = actionsData?.email
+  const otp = actionsData?.opt
 
   return (
     <section className="w-full min-h-screen flex flex-col">
@@ -83,7 +85,7 @@ export default function Index() {
 
           <div className="max-w-6xl mx-auto justify-center items-center flex flex-col gap-10">
               <AccountForm />  
-              <TestForm otpcode={actionsData?.opt}/>
+              <TestForm otpcode={otp!} name={name as string} email={email as string} />
               
               
              
