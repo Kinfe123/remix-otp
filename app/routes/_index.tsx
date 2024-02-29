@@ -5,6 +5,7 @@ import { Card, CardContent } from "~/components/ui/card";
 import { ThemeToggle } from "./resources.theme-toggle";
 import { OTPInput } from "input-otp";
 import { FakeDash, Slot } from "~/components/opt-form";
+import { useState } from "react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -21,6 +22,11 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const [val , setVal] = useState('')
+  const handleSubmit = () => {
+    console.log('hELLO WORLD')
+
+  }
   return (
     <section className="w-full min-h-screen flex flex-col">
       <nav className="flex items-center justify-between p-4 w-full">
@@ -38,12 +44,7 @@ export default function Index() {
              REMIX
             </span>{" "}
             Otp in Actions
-            <Link
-              to="https://ui.aceternity.com"
-              className="hover:text-blue-500"
-            >
-             
-            </Link>
+           
           </h1>
 
           <p className="text-muted-foreground font-bold mt-2">
@@ -66,6 +67,9 @@ export default function Index() {
           <div className="flex justify-center items-center">
             <OTPInput
               maxLength={6}
+              value={val}
+              onChange={(e) => setVal(e.target.value)}  
+              onSubmit={handleSubmit}
               containerClassName="group flex items-center has-[:disabled]:opacity-30"
               render={({ slots }) => (
                 <>
