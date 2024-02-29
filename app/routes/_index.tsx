@@ -1,14 +1,17 @@
 import { Button } from "~/components/ui/button";
-import { Link, MetaFunction } from "@remix-run/react";
+import { Link, MetaFunction, useActionData, useLoaderData } from "@remix-run/react";
 import { Command } from "lucide-react";
 import { Card, CardContent } from "~/components/ui/card";
 import { ThemeToggle } from "./resources.theme-toggle";
 import { OTPInput } from "input-otp";
 import { FakeDash, Slot } from "~/components/opt-form";
+import { json } from "@remix-run/node";
 import { useState } from "react";
 import TestForm from "~/components/test-form";
 import AccountForm from "~/components/account-form";
 import type { ActionFunctionArgs } from "@remix-run/node";
+import { randomPassword } from "~/lib/password";
+import { toast } from "sonner";
 export const meta: MetaFunction = () => {
   return [
     { title: "A Remix otp in actions" },
@@ -29,19 +32,17 @@ export const action = async ({
   const formData = await request.formData()
   const name = formData.get('name')
   const email = formData.get('email')
-  console.log('The email and name are:', name, email)
-  return null;
+  
+  toast.success('We have sent you an OTP to verify' , {position:'top-center'})
+  return json({name: name , email: email , opt: randomPassword()})
 
 
 };
 
 export default function Index() {
-  const [val , setVal] = useState('')
-  
-  const handleSubmit = () => {
-    console.log('hELLO WORLD')
+  const actionsData = useActionData<typeof action>()
+  console.log(actionsData?.opt)
 
-  }
   return (
     <section className="w-full min-h-screen flex flex-col">
       <nav className="flex items-center justify-between p-4 w-full">
@@ -72,18 +73,26 @@ export default function Index() {
           <Card className="relative group overflow-hidden rounded-lg">
             <CardContent className="p-1 bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 bg-300% animate-gradient">
               <Button asChild>
-                <Link to="https://github.com/Kinfe123/remix-otp">
-                  Check it on Github
+                <Link to="/about">
+                Test it out
                 </Link>
               </Button>
             </CardContent>
           </Card>
+          {actionsData?.opt && <code>The code is: {actionsData.opt}</code>}
 
-          <div className="flex flex-col gap-10 justify-center items-center">
-              <AccountForm />
+          <div className="max-w-6xl mx-auto justify-center items-center flex flex-col gap-10">
+              <AccountForm />  
+              <TestForm otpcode={actionsData?.opt}/>
+              
+              
              
-          </div>
 
+        
+
+        </div>
+
+          
         </div>
       </div>
     </section>

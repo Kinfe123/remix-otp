@@ -11,6 +11,8 @@ import {
 } from "@remix-run/react";
 import styles from "./tailwind.css";
 import { getTheme } from "./lib/theme.server";
+import { Toaster } from 'sonner';
+
 import {
   ClientHintCheck,
   getHints,
@@ -49,6 +51,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+      <Toaster />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
