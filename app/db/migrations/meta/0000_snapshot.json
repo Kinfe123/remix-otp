@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "6a4edacd-ad48-41d1-9b89-6b1a4c11cebc",
+  "id": "2b2e672c-e4e1-4119-9849-c91fbda01cbb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "otps": {
@@ -14,9 +14,16 @@
           "notNull": true,
           "autoincrement": false
         },
-        "optcode": {
-          "name": "optcode",
+        "name": {
+          "name": "name",
           "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "otp": {
+          "name": "otp",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false

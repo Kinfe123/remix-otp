@@ -34,7 +34,7 @@ export const action = async ({
   const otp = randomPassword()
   const email = formData.get('email')
 
-  return json({name: name , email: email , opt:otp })
+  return json({ name: name, email: email, opt: otp })
 
 
 };
@@ -59,43 +59,43 @@ export default function Index() {
           <h1 className="text-3xl md:text-4xl font-bold tracking-tighter">
             A{" "}
             <span className="font-extrabold bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text bg-300% animate-gradient">
-             REMIX
+              REMIX
             </span>{" "}
             Otp in Actions
-           
+
           </h1>
 
           <p className="text-muted-foreground font-bold mt-2">
             With optimistic dark-mode.
           </p>
           <p className="text-muted-foreground mt-2">
-           remix + turso + drizzle + nodemailer + sqlite 
+            remix + turso + drizzle + nodemailer + sqlite
           </p>
 
           <Card className="relative group overflow-hidden rounded-lg">
             <CardContent className="p-1 bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 bg-300% animate-gradient">
               <Button asChild>
                 <Link to="/about">
-                Test it out
+                  Test it out
                 </Link>
               </Button>
             </CardContent>
           </Card>
-         
+
 
           <div className="max-w-6xl mx-auto justify-center items-center flex flex-col gap-10">
-              <AccountForm />  
-              <TestForm otpcode={otp!} name={name as string} email={email as string} />
-              
-              
-             
+            <AccountForm />
+            <TestForm otpcode={otp!} name={name as string} email={email as string} />
 
-        
 
-        </div>
-        {actionsData?.opt && <code>The code is: {actionsData.opt}</code>}
 
-          
+
+
+
+          </div>
+          {actionsData?.opt && <code>The code is: {actionsData.opt}</code>}
+
+
         </div>
       </div>
     </section>
