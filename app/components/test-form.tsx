@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { FakeDash, Slot } from "./opt-form";
 import { toast } from "sonner";
 import { useTransition } from "react";
-import { createAccount } from "~/server/accoun.server";
+import { createAccount } from "../server/account.server";
 
 export default function TestForm({otpcode , name , email}: {otpcode: number  , name: string  , email: string }) {
 
