@@ -6,7 +6,7 @@ import { useTransition } from "react";
 import { createAccount } from "../server/account.server";
 
 export default function TestForm({ otpcode, name, email }: { otpcode: number, name: string, email: string }) {
-
+    console.log('INfo' , otpcode , name , email)
     const [val, setVal] = useState('')
     const [isPending, startTransition] = useTransition()
 

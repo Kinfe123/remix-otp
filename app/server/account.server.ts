@@ -1,3 +1,4 @@
+import { eq } from "drizzle-orm";
 import { db } from "~/db/config.server";
 import { otps } from "~/db/schema.server";
 export const createAccount = async ({
@@ -22,4 +23,17 @@ export const createAccount = async ({
 
 export const somehow = () => {
   return 'ping: from server'
+}
+
+
+export const accountFind = async ({email}: {email: string}) => {
+ const exists = await db.select().from(otps).where(eq(otps.email, email))
+ console.log('the email' , exists)
+ return exists
+
+}
+
+export const fetchAccount = async () => {
+  const accounts = await db.select().from(otps)
+  return accounts
 }

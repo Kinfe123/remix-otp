@@ -11,7 +11,7 @@ import TestForm from "~/components/test-form";
 import AccountForm from "~/components/account-form";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { randomPassword } from "~/lib/password";
-import { createAccount, somehow } from "~/server/account.server";
+import { createAccount, fetchAccount, somehow } from "~/server/account.server";
 
 
 export const meta: MetaFunction = () => {
@@ -36,7 +36,14 @@ export const action = async ({
   const otp = randomPassword()
   const email = formData.get('email')
 
-  return json({ name: name, email: email, opt: otp })
+  const allAccount = await fetchAccount()
+  const filtered = allAccount.filter(f => f.email === email)
+  console.log('The filtered one is : ' , filtered)
+  if(filtered.length) {
+    return json({name:"" , email:"" , otp:otp})
+  }
+
+  return json({ name: name, email: email, otp: otp })
 
 
 };
@@ -45,8 +52,14 @@ export default function Index() {
   const actionsData = useActionData<typeof action>()
   const name = actionsData?.name
   const email = actionsData?.email
-  const otp = actionsData?.opt
+  const otp = actionsData?.otp
+  const fetchAccount = async () => {
+    const req = await fetch('/account')
+    const res = await req.json()
+    console.log("The data os : ", res)
+    
 
+  }
 
   return (
     <section className="w-full min-h-screen flex flex-col">
@@ -71,6 +84,7 @@ export default function Index() {
           <p className="text-muted-foreground font-bold mt-2">
             With optimistic dark-mode.
           </p>
+          <button onClick={fetchAccount}>Fetch account</button>
          
           <p className="text-muted-foreground mt-2">
             remix + turso + drizzle + nodemailer + sqlite
@@ -89,7 +103,7 @@ export default function Index() {
 
           <div className="max-w-6xl mx-auto justify-center items-center flex flex-col gap-10">
             <AccountForm />
-            <TestForm otpcode={otp!} name={name as string} email={email as string} />
+            {(name && email && otp) && <TestForm otpcode={otp!} name={name as string} email={email as string} />}
 
 
 
@@ -97,7 +111,7 @@ export default function Index() {
 
 
           </div>
-          {actionsData?.opt && <code>The code is: {actionsData.opt}</code>}
+          {actionsData?.otp && <code>The code is: {actionsData.otp}</code>}
 
 
         </div>
