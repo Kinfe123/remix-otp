@@ -11,6 +11,8 @@ import TestForm from "~/components/test-form";
 import AccountForm from "~/components/account-form";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { randomPassword } from "~/lib/password";
+import { createAccount, somehow } from "~/server/account.server";
+
 
 export const meta: MetaFunction = () => {
   return [
@@ -45,6 +47,7 @@ export default function Index() {
   const email = actionsData?.email
   const otp = actionsData?.opt
 
+
   return (
     <section className="w-full min-h-screen flex flex-col">
       <nav className="flex items-center justify-between p-4 w-full">
@@ -68,6 +71,7 @@ export default function Index() {
           <p className="text-muted-foreground font-bold mt-2">
             With optimistic dark-mode.
           </p>
+         
           <p className="text-muted-foreground mt-2">
             remix + turso + drizzle + nodemailer + sqlite
           </p>

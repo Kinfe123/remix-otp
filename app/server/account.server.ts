@@ -20,4 +20,6 @@ export const createAccount = async ({
 
 
 
-
+export const somehow = () => {
+  return 'ping: from server'
+}
