@@ -6,12 +6,11 @@ import { ThemeToggle } from "./resources.theme-toggle";
 import { OTPInput } from "input-otp";
 import { FakeDash, Slot } from "~/components/opt-form";
 import { json } from "@remix-run/node";
-import { useState } from "react";
 import TestForm from "~/components/test-form";
 import AccountForm from "~/components/account-form";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { randomPassword } from "~/lib/password";
-import { createAccount, fetchAccount, somehow } from "~/server/account.server";
+import { fetchAccount } from "~/server/account.server";
 
 
 export const meta: MetaFunction = () => {
@@ -35,10 +34,8 @@ export const action = async ({
   const name = formData.get('name')
   const otp = randomPassword()
   const email = formData.get('email')
-
   const allAccount = await fetchAccount()
   const filtered = allAccount.filter(f => f.email === email)
-  console.log('The filtered one is : ' , filtered)
   if(filtered.length) {
     return json({name:"" , email:"" , otp:otp})
   }
@@ -53,13 +50,8 @@ export default function Index() {
   const name = actionsData?.name
   const email = actionsData?.email
   const otp = actionsData?.otp
-  const fetchAccount = async () => {
-    const req = await fetch('/account')
-    const res = await req.json()
-    console.log("The data os : ", res)
-    
-
-  }
+ 
+ 
 
   return (
     <section className="w-full min-h-screen flex flex-col">
@@ -84,7 +76,6 @@ export default function Index() {
           <p className="text-muted-foreground font-bold mt-2">
             With optimistic dark-mode.
           </p>
-          <button onClick={fetchAccount}>Fetch account</button>
          
           <p className="text-muted-foreground mt-2">
             remix + turso + drizzle + nodemailer + sqlite
